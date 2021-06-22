@@ -23,3 +23,31 @@ describe('server.js', () => {
     expect(process.env.NODE_ENV).toBe('testing')
   })
 })
+
+describe("[GET] Classes", ()=>{
+  beforeEach(async()=>{
+      await db("Classes").insert({ClassId: 106, Name: "Rehab & Preventative Stretching"})
+      await db("Classes").insert({ClassId: 107, Name: "Group Walk"})
+  })
+
+  it("Gets List Of Classes", async()=>{
+
+      const result = await request(server).get("/api/classes")
+
+      expect(result.body).toHaveLength(2)
+  })
+})
+
+describe("[POST] Classes", ()=>{
+
+  it("Posts new class and returns list with inserted class", async()=>{
+
+      const newClass = {ClassId: 106, Name: "Rehab & Preventative Stretching"}
+
+      await request(server).post("/api/classes").send(newClass)
+
+      const result = await db("Classes")
+
+      expect(result).toHaveLength(1)
+  })
+})

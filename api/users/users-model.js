@@ -1,5 +1,5 @@
 //SHOULD CHECK w/ TESTS (Possible Table Issues)
-const db = require("../../db-config");
+const db = require("../data/db-config");
 
 
 function getAllUsers(){
