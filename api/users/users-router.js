@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 
 //[GET] User By UserId
 router.get("/:UserId", (req, res) => {
-    const {UserId} = req.params; 
+    const { UserId } = req.params; 
 
     if(UserId){
         Users.getUserByUserId(req.params.UserId)

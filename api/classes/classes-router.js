@@ -1,13 +1,12 @@
-const express = require("express");
+const router = require("express").Router();
 const Classes = require("./classes-model");
-const router = express.Router();
 
 
 //ENDPOINTS
 //[GET] All Classes
 router.get("/", (req, res)=>{
     Classes.getAllClasses()
-    .then((allClasses)=>{
+    .then(allClasses => {
         res.status(200).json(allClasses);
     })
     .catch((err)=>{

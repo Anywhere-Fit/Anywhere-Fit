@@ -10,7 +10,7 @@ server.use(cors())
 const usersRouter = require('./users/users-router')
 const classesRouter = require('./classes/classes-router')
 
-server.use("/api/users",usersRouter);
+server.use("/api/users", usersRouter);
 server.use("/api/classes", classesRouter);
 
 
