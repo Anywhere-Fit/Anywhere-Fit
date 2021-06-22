@@ -35,9 +35,9 @@ exports.up = async (knex) => {
 })
 }
 
-exports.down = async (knex) => {
-  await knex.schema
+exports.down = function(knex) {
+  return knex.schema
   .dropTableIfExists("UsersClasses")
   .dropTableIfExists("Classes")
-  .dropTableIfExists('users')
+  .dropTableIfExists('Users')
 }
