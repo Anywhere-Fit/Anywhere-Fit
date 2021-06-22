@@ -1,3 +1,4 @@
+//SHOULD CHECK w/ TESTS (Possible Table Issues)
 const db = require("../../db-config");
 
 
