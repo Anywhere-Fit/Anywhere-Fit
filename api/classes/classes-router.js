@@ -16,7 +16,7 @@ router.get("/", (req, res)=>{
 })
 
 //[GET] Class By ClassId
-router.get("/ClassId/:ClassId", (req, res)=>{
+router.get("/:ClassId", (req, res)=>{
     const { ClassId } = req.params;
     
     if(ClassId){
@@ -33,7 +33,7 @@ router.get("/ClassId/:ClassId", (req, res)=>{
 })
 
 //[PUT] / Update Class By ClassId
-router.put("/ClassId/:Classid", (req, res)=>{
+router.put("/:Classid", (req, res)=>{
     const updatedClass = req.body;
 
     if(updatedClass.Name && updatedClass.ClassId){
@@ -51,7 +51,6 @@ router.put("/ClassId/:Classid", (req, res)=>{
 
 //[POST] New Class
 router.post("/", (req, res)=>{
-
     const newClass = req.body;
 
     if(newClass.ClassId && newClass.Name){
@@ -72,8 +71,7 @@ router.post("/", (req, res)=>{
 })
 
 //[DELETE] Class By ClassId
-router.delete("/ClassId/:ClassId", (req, res)=>{
-    
+router.delete("/:ClassId", (req, res)=>{
     const { ClassId } = req.params;
 
     Classes.deleteClass(ClassId)
@@ -83,7 +81,6 @@ router.delete("/ClassId/:ClassId", (req, res)=>{
     .catch((err)=>{
         res.status(500).json({message: err.message});
     })
-
 })
 
 module.exports = router;
