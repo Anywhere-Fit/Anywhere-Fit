@@ -1,5 +1,5 @@
 exports.seed = function(knex) {
-    return knex("classes").insert([
+    return knex("Classes").insert([
       {
         ClassId: 99,
         Name: "Hill Sprints",
