@@ -19,7 +19,7 @@ function getBy(filter) {
 async function createUser(userToAdd){
     const userToAddId = await db("Users")
             .insert(userToAdd)
-    return getByUserId(userToAddId);
+    return getUserByUserId(userToAddId);
     // const [UserId] = await db("Users").insert(credentials)
     // return getUserByUserId(UserId) ;
 }

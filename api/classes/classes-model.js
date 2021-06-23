@@ -12,7 +12,7 @@ function getByClassId(ClassId){
 
 async function updateClassByClassId(UpdatedClass){
     await db("Classes")
-            .where("ClassId", UpdatedClass.ClassId)
+            .where("ClassId", ClassId)
             .update(UpdatedClass)
 
     return getByClassId(UpdatedClass.ClassId)

@@ -34,10 +34,9 @@ describe("Classes", ()=>{
         const resulting = await db("Classes")
         expect(resulting).toHaveLength(0)
 
-        await db("Classes").insert({ClassId: 105, Name: "Rehabilitation & Preventative Stretching, Active Movements"})
+        await db("Classes").addClass({ClassId: 110, Name: "Rehabilitation & Preventative Stretching, Active Movements"})
         const updatedResult = await db("Classes")
         expect(updatedResult).toHaveLength(1)
-        updatedResult.truncate()
     })
 
     it("Deletes A Class", async()=>{
