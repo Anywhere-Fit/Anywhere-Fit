@@ -7,7 +7,7 @@ beforeAll(async()=>{
 })
 
 beforeEach(async()=>{
-    await db("Classes")
+    await db("Classes").truncate()
 })
 
 afterAll(async()=>{

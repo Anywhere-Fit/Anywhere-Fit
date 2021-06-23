@@ -41,13 +41,10 @@ describe("[GET] Classes", ()=>{
 describe("[POST] Classes", ()=>{
 
   it("Posts new class and returns list with inserted class", async()=>{
-
       const newClass = {ClassId: 106, Name: "Rehab & Preventative Stretching"}
-
       await request(server).post("/api/classes").send(newClass)
 
       const result = await db("Classes")
-
       expect(result).toHaveLength(1)
   })
 })
