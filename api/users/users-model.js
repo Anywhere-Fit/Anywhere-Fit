@@ -16,9 +16,12 @@ function getBy(filter) {
       .where(filter);
 }
 
-async function createUser(credentials){
-    const [UserId] = await db("Users").insert(credentials)
-    return getUserByUserId(UserId) ;
+async function createUser(userToAdd){
+    const userToAddId = await db("Users")
+            .insert(userToAdd)
+    return getByUserId(userToAddId);
+    // const [UserId] = await db("Users").insert(credentials)
+    // return getUserByUserId(UserId) ;
 }
 
 async function updateUserByUserId(UpdatedUser){

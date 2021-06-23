@@ -1,7 +1,7 @@
 exports.seed = function(knex) {
-    return knex("users").insert([
-      {UserId: 1, Username: "instructor", Password: "1234", Role: "instructor"},
-      {UserId: 2, Username: "instructor2", Password: "1234", Role: "instructor"},
-      {UserId: 3, Username: "client", Password: "1234", Role: "client"}
+    return knex("Users").insert([
+      {UserId: 1, User_Username: "instructor", User_Password: "1234", User_Password: "instructor"},
+      {UserId: 2, User_Username: "instructor2", User_Password: "1234", User_Password: "instructor"},
+      {UserId: 3, User_Username: "client", User_Password: "1234", User_Password: "client"}
     ])
   };
