@@ -7,12 +7,12 @@ function getAllUsers(){
 }
 
 function getUserByUserId(UserId){
-    return db("Users").where("User_Id", UserId)
+    return db("Users").where("UserId", UserId)
 }
 
 function getBy(filter) {
     return db("Users as U")
-      .select("U.User_Id", "U.User_Username")
+      .select("U.UserId", "U.User_Username")
       .where(filter);
 }
 
@@ -23,14 +23,14 @@ async function createUser(credentials){
 
 async function updateUserByUserId(UpdatedUser){
     await db("Users")
-        .where("User_Id", UpdatedUser.UserId)
+        .where("UserId", UpdatedUser.UserId)
         .update(UpdatedUser)
     return getUserByUserId(UpdatedUser.UserId);
 }
 
 async function deleteUserByUserId(UserIdToRemove){
     await db("Users")
-        .where("User_Id", UserIdToRemove)
+        .where("UserId", UserIdToRemove)
         .del()
     return getAllUsers();
 }
@@ -38,10 +38,10 @@ async function deleteUserByUserId(UserIdToRemove){
 function getUsersClasses(UserId){
 
     return db("UsersClasses As UC")
-    .join("Users As U", "UC.User_Id", "U.User_Id")
-    .join("Classes As C", "UC.Class_Id", "C.Class_Id")
-    .select("U.User_Id", "U.User_Username", "UC.Class_Id", "C.Name")
-    .where("U.User_Id", UserId)
+    .join("Users As U", "UC.UserId", "U.UserId")
+    .join("Classes As C", "UC.ClassId", "C.ClassId")
+    .select("U.UserId", "U.User_Username", "UC.ClassId", "C.Name")
+    .where("U.UserId", UserId)
 }
 
 module.exports = {

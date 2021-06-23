@@ -130,7 +130,6 @@ const makeToken = user => {
     const options = {
         expiresIn: "1h"
     }
-
     return jwt.sign(payload, jwtSecret, options);
 }
 

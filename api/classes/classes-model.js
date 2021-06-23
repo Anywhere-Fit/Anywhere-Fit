@@ -7,12 +7,12 @@ function getAllClasses(){
 
 function getByClassId(ClassId){
     return db("Classes")
-            .where("Class_Id", ClassId)
+            .where("ClassId", ClassId)
 }
 
 async function updateClassByClassId(UpdatedClass){
     await db("Classes")
-            .where("Class_Id", UpdatedClass.ClassId)
+            .where("ClassId", UpdatedClass.ClassId)
             .update(UpdatedClass)
 
     return getByClassId(UpdatedClass.ClassId)
@@ -26,7 +26,7 @@ async function updateClassByClassId(UpdatedClass){
 
 async function deleteClassByClassId(ClassId){
     await db("Classes")
-            .where("Class_Id", ClassId)
+            .where("ClassId", ClassId)
             .del()
     return getAllClasses()
 }

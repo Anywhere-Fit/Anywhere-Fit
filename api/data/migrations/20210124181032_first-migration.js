@@ -1,16 +1,13 @@
 exports.up = function(knex) {
-  return knex.schema
-    .createTable('Users', (users) => {
-      users.increments('User_Id')
-      users.string('User_Username', 200).notNullable()
-      users.string('User_Password', 200).notNullable()
-      users.string('User_Email', 320)
-      users.string("Role").notNullable()
-      users.timestamps(false, true)
-
+  return knex.schema.createTable("Users", tbl => {
+      tbl.increments('UserId')
+      tbl.string('User_Username', 200).notNullable()
+      tbl.string('User_Password', 200).notNullable()
+      tbl.string('User_Email', 320)
+      tbl.string("User_Role").notNullable()
     })
-    .createTable("Classes", (tbl)=>{
-      tbl.increments("Class_Id")
+    .createTable("Classes", tbl => {
+      tbl.increments("ClassId")
       tbl.string("Name").notNullable()
       tbl.string("Type")
       tbl.string("StartTime")
@@ -19,25 +16,25 @@ exports.up = function(knex) {
       tbl.string("Location")
       tbl.integer("Attendees").unsigned()
       tbl.integer("MaxClassSize").unsigned()
-  })
-  .createTable("UsersClasses", (tbl)=>{
-    tbl.increments("UC_Id")
-    tbl.integer("User_Id")
-        .notNullable()
-        .references("User_Id")
-        .inTable("Users")
-        .onDelete("CASCADE")
-    tbl.integer("Class_Id")
-        .notNullable()
-        .references("Class_Id")
-        .inTable("Classes")
-        .onDelete("CASCADE")
-})
+    })
+  // .createTable("UsersClasses", tbl => {
+  //   tbl.increments("UCId")
+  //   tbl.integer("UserIdUC")
+  //       .notNullable()
+  //       .references("UserId")
+  //       .inTable("Users")
+  //       .onDelete("CASCADE")
+  //   tbl.integer("ClassIdUC")
+  //       .notNullable()
+  //       .references("ClassId")
+  //       .inTable("Classes")
+  //       .onDelete("CASCADE")
+  // })
 }
 
 exports.down = function(knex) {
   return knex.schema
-  .dropTableIfExists("UsersClasses")
+  // .dropTableIfExists("UsersClasses")
   .dropTableIfExists("Classes")
-  .dropTableIfExists('Users')
+  .dropTableIfExists("Users")
 }

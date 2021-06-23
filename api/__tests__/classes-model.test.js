@@ -7,7 +7,7 @@ beforeAll(async()=>{
 })
 
 beforeEach(async()=>{
-    await db("Classes").truncate()
+    await db("Classes")
 })
 
 afterAll(async()=>{
@@ -15,16 +15,13 @@ afterAll(async()=>{
 })
 
 describe("Classes", ()=>{
-
-    it("testing environment is correct", ()=>{
-
+    it("Testing Environment Is Correct", ()=>{
         const result = process.env.NODE_ENV
 
         expect(result).toBe("testing");
     })
 
-    it("displays a list of classes", async()=>{
-
+    it("Displays A List Of Classes", async()=>{
         const result = await db("Classes")
         expect(result).toHaveLength(0)
 
@@ -32,17 +29,18 @@ describe("Classes", ()=>{
         const updatedResult = await db("Classes")
         expect(updatedResult).toHaveLength(1)
     })
-    it("posts a new class", async()=>{
-
-        const result = await db("Classes")
-        expect(result).toHaveLength(0)
+    
+    it("Posts A New Class", async()=>{
+        const resulting = await db("Classes")
+        expect(resulting).toHaveLength(0)
 
         await db("Classes").insert({ClassId: 105, Name: "Rehabilitation & Preventative Stretching, Active Movements"})
         const updatedResult = await db("Classes")
         expect(updatedResult).toHaveLength(1)
+        updatedResult.truncate()
     })
-    it("deletes a class", async()=>{
-        
+
+    it("Deletes A Class", async()=>{
         const result = await db("Classes")
         expect(result).toHaveLength(0)
 
@@ -53,8 +51,5 @@ describe("Classes", ()=>{
         Classes.deleteClassByClassId(105)
         const finalResult = await db("Classes")
         expect(finalResult).toHaveLength(0);
-
-
-
     })
 })
